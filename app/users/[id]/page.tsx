@@ -39,8 +39,8 @@ export default async function UserDetailPage({ params, searchParams }: PageProps
   // Build back URL with preserved query params
   const backParams = new URLSearchParams();
   if (queryParams.search) backParams.set("search", queryParams.search as string);
-  if (queryParams.activeFilter) backParams.set("activeFilter", queryParams.activeFilter as string);
-  if (queryParams.skillFilter) backParams.set("skillFilter", queryParams.skillFilter as string);
+  if (queryParams.active) backParams.set("active", queryParams.active as string);
+  if (queryParams.skill) backParams.set("skill", queryParams.skill as string);
   if (queryParams.page) backParams.set("page", queryParams.page as string);
   
   const backUrl = backParams.toString() ? `/?${backParams.toString()}` : "/";

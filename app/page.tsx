@@ -148,6 +148,7 @@ export default function Home() {
               totalPages={pagination.totalPages}
               totalItems={pagination.total}
               onPageChange={handlePageChange}
+              currentSearchParams={searchParams.toString()}
             />
           )}
         </div>

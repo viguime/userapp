@@ -21,11 +21,17 @@ interface UserTableProps {
   totalPages: number;
   totalItems: number;
   onPageChange: (page: number) => void;
+  currentSearchParams?: string;
 }
 
-export function UserTable({ users, currentPage, totalPages, totalItems, onPageChange }: UserTableProps) {
+export function UserTable({ users, currentPage, totalPages, totalItems, onPageChange, currentSearchParams = '' }: UserTableProps) {
   const getInitials = (firstName: string, lastName: string) => {
     return `${firstName.charAt(0)}${lastName.charAt(0)}`.toUpperCase();
+  };
+
+  const getDetailUrl = (userId: number) => {
+    const baseUrl = `/users/${userId}`;
+    return currentSearchParams ? `${baseUrl}?${currentSearchParams}` : baseUrl;
   };
 
   return (
@@ -71,7 +77,7 @@ export function UserTable({ users, currentPage, totalPages, totalItems, onPageCh
                   </Badge>
                 </TableCell>
                 <TableCell>
-                  <Link href={`/users/${user.id}`}>
+                  <Link href={getDetailUrl(user.id)}>
                     <Button variant="outline" size="sm">
                       View
                     </Button>
