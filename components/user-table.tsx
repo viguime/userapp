@@ -40,11 +40,11 @@ export function UserTable({ users, currentPage, totalPages, totalItems, onPageCh
       <div className="overflow-x-auto">
         <Table>
           <TableHeader>
-            <TableRow>
-              <TableHead>User</TableHead>
-              <TableHead className="hidden sm:table-cell">Email</TableHead>
-              <TableHead className="hidden md:table-cell">Phone Number</TableHead>
-              <TableHead className="w-[100px] sm:w-[120px]">Status</TableHead>
+            <TableRow className="h-12">
+              <TableHead className="uppercase">User</TableHead>
+              <TableHead className="hidden sm:table-cell uppercase">Email</TableHead>
+              <TableHead className="hidden md:table-cell uppercase">Phone Number</TableHead>
+              <TableHead className="w-[100px] sm:w-[120px] uppercase">Status</TableHead>
               <TableHead className="w-[80px] sm:w-[100px]"></TableHead>
             </TableRow>
           </TableHeader>
@@ -86,7 +86,7 @@ export function UserTable({ users, currentPage, totalPages, totalItems, onPageCh
                   </TableCell>
                   <TableCell>
                     <Link href={getDetailUrl(user.id)}>
-                      <Button variant="outline" size="sm" className="text-xs sm:text-sm px-2 sm:px-3 bg-white ">
+                      <Button variant="outline" size="sm" className="text-xs sm:text-sm px-2 sm:px-3 bg-white text-muted-foreground hover:text-foreground">
                         View
                       </Button>
                     </Link>

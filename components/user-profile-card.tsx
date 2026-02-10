@@ -21,7 +21,7 @@ export function UserProfileCard({ user, backUrl = "/" }: UserProfileCardProps) {
           <Button variant="outline"
             className="mb-6 text-secondary bg-card hover:bg-muted rounded"
           >
-            <span className="mr-2">←</span>
+            <span>←</span>
             Back to User List
           </Button>
         </Link>
@@ -94,7 +94,7 @@ export function UserProfileCard({ user, backUrl = "/" }: UserProfileCardProps) {
           {/* Description Card */}
           {user.description && (
             <div className="p-3 md:p-4 bg-muted rounded-lg">
-              <p className="text-xs md:text-sm text-secondary italic leading-relaxed">
+              <p className="text-sm md:text-lg text-secondary italic leading-relaxed text-center">
                 "{user.description}"
               </p>
             </div>
