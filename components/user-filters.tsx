@@ -32,8 +32,9 @@ export function UserFilters({
 }: UserFiltersProps) {
   return (
     <div className="space-y-4">
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div className="relative flex-1 max-w-sm">
+      <div className="flex flex-col md:flex-row gap-4 md:items-center md:justify-between">
+        {/* Search Input - Full width on mobile, constrained on desktop */}
+        <div className="relative w-full md:flex-1 md:max-w-sm">
           <Input
             placeholder="Search users..."
             value={search}
@@ -41,13 +42,15 @@ export function UserFilters({
           />
         </div>
 
-        <div className="flex gap-2">
-          <div className="inline-flex rounded-md" role="group">
+        {/* Filters - Stack on mobile, row on desktop */}
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-2">
+          {/* Active Filter Button Group */}
+          <div className="inline-flex rounded-md w-full sm:w-auto" role="group">
             <Button
               type="button"
               variant={activeFilter === 'all' ? 'default' : 'outline'}
               onClick={() => onActiveFilterChange('all')}
-              className="rounded-r-none h-10"
+              className="rounded-r-none h-10 flex-1 sm:flex-none"
             >
               All
             </Button>
@@ -55,7 +58,7 @@ export function UserFilters({
               type="button"
               variant={activeFilter === 'true' ? 'default' : 'outline'}
               onClick={() => onActiveFilterChange('true')}
-              className="rounded-none border-l-0 h-10"
+              className="rounded-none border-l-0 h-10 flex-1 sm:flex-none"
             >
               Active
             </Button>
@@ -63,14 +66,15 @@ export function UserFilters({
               type="button"
               variant={activeFilter === 'false' ? 'default' : 'outline'}
               onClick={() => onActiveFilterChange('false')}
-              className="rounded-l-none border-l-0 h-10"
+              className="rounded-l-none border-l-0 h-10 flex-1 sm:flex-none"
             >
               Inactive
             </Button>
           </div>
 
+          {/* Skill Filter Dropdown */}
           <Select value={skillFilter} onValueChange={onSkillFilterChange}>
-            <SelectTrigger className="w-[200px]">
+            <SelectTrigger className="w-full sm:w-[200px] h-10">
               <SelectValue placeholder="Main Skill" />
             </SelectTrigger>
             <SelectContent>

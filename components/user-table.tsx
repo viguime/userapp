@@ -36,58 +36,67 @@ export function UserTable({ users, currentPage, totalPages, totalItems, onPageCh
 
   return (
     <div className="rounded-lg border bg-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] overflow-hidden">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>User</TableHead>
-            <TableHead>Email</TableHead>
-            <TableHead>Phone Number</TableHead>
-            <TableHead className="w-[120px]">Status</TableHead>
-            <TableHead className="w-[100px]"></TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {users.length === 0 ? (
+      {/* Mobile-friendly table with horizontal scroll */}
+      <div className="overflow-x-auto">
+        <Table>
+          <TableHeader>
             <TableRow>
-              <TableCell colSpan={5} className="text-center text-muted-foreground">
-                No users found
-              </TableCell>
+              <TableHead>User</TableHead>
+              <TableHead className="hidden sm:table-cell">Email</TableHead>
+              <TableHead className="hidden md:table-cell">Phone Number</TableHead>
+              <TableHead className="w-[100px] sm:w-[120px]">Status</TableHead>
+              <TableHead className="w-[80px] sm:w-[100px]"></TableHead>
             </TableRow>
-          ) : (
-            users.map((user) => (
-              <TableRow key={user.id} className="hover:bg-gray-50">
-                <TableCell>
-                  <div className="flex items-center gap-3">
-                    <Avatar className="h-10 w-10">
-                      <AvatarImage src={user.avatar} alt={`${user.first_name} ${user.last_name}`} />
-                      <AvatarFallback>{getInitials(user.first_name, user.last_name)}</AvatarFallback>
-                    </Avatar>
-                    <span className="font-medium">
-                      {user.first_name} {user.last_name}
-                    </span>
-                  </div>
-                </TableCell>
-                <TableCell className="text-muted-foreground">{user.email}</TableCell>
-                <TableCell className="text-muted-foreground">
-                  {user.phone_number || 'N/A'}
-                </TableCell>
-                <TableCell>
-                  <Badge variant={user.active ? 'success' : 'destructive'}>
-                    {user.active ? 'Active' : 'Inactive'}
-                  </Badge>
-                </TableCell>
-                <TableCell>
-                  <Link href={getDetailUrl(user.id)}>
-                    <Button variant="outline" size="sm">
-                      View
-                    </Button>
-                  </Link>
+          </TableHeader>
+          <TableBody>
+            {users.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={5} className="text-center text-muted-foreground">
+                  No users found
                 </TableCell>
               </TableRow>
-            ))
-          )}
-        </TableBody>
-      </Table>
+            ) : (
+              users.map((user) => (
+                <TableRow key={user.id} className="hover:bg-gray-50">
+                  <TableCell>
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-[140px]">
+                      <Avatar className="h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0">
+                        <AvatarImage src={user.avatar} alt={`${user.first_name} ${user.last_name}`} />
+                        <AvatarFallback>{getInitials(user.first_name, user.last_name)}</AvatarFallback>
+                      </Avatar>
+                      <div className="flex flex-col">
+                        <span className="font-medium text-sm sm:text-base">
+                          {user.first_name} {user.last_name}
+                        </span>
+                        {/* Show email on mobile when column is hidden */}
+                        <span className="text-xs text-muted-foreground sm:hidden truncate max-w-[120px]">
+                          {user.email}
+                        </span>
+                      </div>
+                    </div>
+                  </TableCell>
+                  <TableCell className="hidden sm:table-cell text-muted-foreground text-sm">{user.email}</TableCell>
+                  <TableCell className="hidden md:table-cell text-muted-foreground text-sm">
+                    {user.phone_number || 'N/A'}
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant={user.active ? 'success' : 'destructive'} className="text-xs">
+                      {user.active ? 'Active' : 'Inactive'}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Link href={getDetailUrl(user.id)}>
+                      <Button variant="outline" size="sm" className="text-xs sm:text-sm px-2 sm:px-3 bg-white ">
+                        View
+                      </Button>
+                    </Link>
+                  </TableCell>
+                </TableRow>
+              ))
+            )}
+          </TableBody>
+        </Table>
+      </div>
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}
