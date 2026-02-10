@@ -52,6 +52,14 @@ const config: Config = {
           DEFAULT: '#FFFFFF',
           foreground: '#111827',
         },
+        success: {
+          DEFAULT: '#D1FAE5',
+          foreground: '#065F46',
+        },
+        inactive: {
+          DEFAULT: '#fff6f6',
+          foreground: '#850e0e',
+        },
       },
       borderRadius: {
         lg: '0.5rem',
