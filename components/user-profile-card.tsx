@@ -27,9 +27,9 @@ export function UserProfileCard({ user, backUrl = "/" }: UserProfileCardProps) {
         </Link>
 
         {/* Profile Card */}
-        <div className="bg-card rounded-xl shadow-lg p-4 sm:p-6 md:p-10">
+        <div className="bg-card rounded-xl shadow-md p-6 md:p-10">
           {/* Avatar */}
-          <div className="flex justify-center mb-6">
+          <div className="flex justify-center mb-4">
             <Avatar className="h-20 w-20 md:h-[100px] md:w-[100px]">
               <AvatarImage src={user.avatar} alt={fullName} />
               <AvatarFallback className="text-xl md:text-2xl">{initials}</AvatarFallback>
@@ -37,34 +37,34 @@ export function UserProfileCard({ user, backUrl = "/" }: UserProfileCardProps) {
           </div>
 
           {/* Name & Title */}
-          <div className="text-center mb-6">
-            <h1 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+          <div className="text-center">
+            <h1 className="text-2xl font-bold text-foreground mb-1">
               {fullName}
             </h1>
-            <p className="text-sm md:text-base text-secondary font-semibold mb-3">{user.title}</p>
+            <p className="text-base text-secondary font-semibold mb-6">{user.title}</p>
             <div className="flex justify-center mb-6">
               <Badge variant={user.active ? "success" : "destructive"}>
                 {user.active ? "Active" : "Inactive"}
               </Badge>
             </div>
             {/* Separator bar */}
-            <div className="h-[1px] bg-border" />
+            <div className="h-[1px] bg-border mb-6" />
           </div>
 
           {/* Details List */}
-          <div className="space-y-2 md:space-y-3 mb-3">
-            <div className="flex gap-2 text-xs md:text-sm">
-              <span className="font-bold text-foreground w-20 md:w-24 flex-shrink-0">Email:</span>
+          <div className="space-y-4 mb-6">
+            <div className="flex gap-2 text-sm">
+              <span className="font-bold text-foreground w-24 flex-shrink-0">Email:</span>
               <span className="text-secondary break-all">{user.email}</span>
             </div>
 
-            <div className="flex gap-2 text-xs md:text-sm">
-              <span className="font-bold text-foreground w-20 md:w-24 flex-shrink-0">Phone:</span>
+            <div className="flex gap-2 text-sm">
+              <span className="font-bold text-foreground w-24 flex-shrink-0">Phone:</span>
               <span className="text-secondary">{user.phone_number || 'N/A'}</span>
             </div>
 
-            <div className="flex gap-2 text-xs md:text-sm">
-              <span className="font-bold text-foreground w-20 md:w-24 flex-shrink-0">University:</span>
+            <div className="flex gap-2 text-sm">
+              <span className="font-bold text-foreground w-24 flex-shrink-0">University:</span>
               <span className="text-secondary">{user.school}</span>
             </div>
           </div>
@@ -72,18 +72,18 @@ export function UserProfileCard({ user, backUrl = "/" }: UserProfileCardProps) {
           {/* Skills Section */}
           <div className="mb-6">
             <div className="flex gap-2 mb-3">
-              <span className="text-xs md:text-sm font-bold text-foreground">Skills:</span>
+              <span className="text-sm font-bold text-foreground">Skills:</span>
             </div>
             <div className="flex flex-wrap gap-2">
               {/* Main Skill */}
-              <span className="inline-flex items-center px-2 md:px-3 py-1 md:py-1.5 rounded text-xs bg-accent/10 text-accent font-bold">
+              <span className="inline-flex items-center px-2 py-1 rounded text-xs bg-[#DBEAFE] text-[#1E40AF] font-semibold">
                 {user.main_skill}
               </span>
               {/* Secondary Skills */}
               {user.secondary_skills && user.secondary_skills.map((skill: string, index: number) => (
                 <span
                   key={index}
-                  className="inline-flex items-center px-2 md:px-3 py-1 md:py-1.5 rounded text-xs bg-muted text-foreground"
+                  className="inline-flex items-center px-2 py-1 rounded text-xs bg-[#F9FAFB] text-foreground"
                 >
                   {skill}
                 </span>
@@ -93,7 +93,7 @@ export function UserProfileCard({ user, backUrl = "/" }: UserProfileCardProps) {
 
           {/* Description Card */}
           {user.description && (
-            <div className="p-3 md:p-4 bg-muted rounded-lg">
+            <div className="mt-6 p-4 bg-muted rounded-lg">
               <p className="text-sm md:text-lg text-secondary italic leading-relaxed text-center">
                 "{user.description}"
               </p>

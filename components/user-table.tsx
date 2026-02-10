@@ -35,7 +35,7 @@ export function UserTable({ users, currentPage, totalPages, totalItems, onPageCh
   };
 
   return (
-    <div className="rounded-lg border bg-white shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] overflow-hidden">
+    <div className="rounded-lg border bg-white shadow-md overflow-hidden">
       {/* Mobile-friendly table with horizontal scroll */}
       <div className="overflow-x-auto">
         <Table>

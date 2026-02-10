@@ -60,6 +60,14 @@ const config: Config = {
           DEFAULT: '#fff6f6',
           foreground: '#850e0e',
         },
+        'main-skill': {
+          DEFAULT: '#DBEAFE',
+          foreground: '#1E40AF',
+        },
+        skill: {
+          DEFAULT: '#F9FAFB',
+          foreground: '#111827',
+        },
       },
       borderRadius: {
         lg: '0.5rem',
